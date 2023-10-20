@@ -3,6 +3,10 @@ kind: ApplicationSet
 metadata:
   name: cluster-git
 spec:
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
   generators:
     # matrix 'parent' generator
     - matrix:
@@ -27,8 +31,3 @@ spec:
       destination:
         server: '{{server}}'
         namespace: '{{path.basename}}'
-      spec:
-        syncPolicy:
-          syncOptions:
-          - CreateNamespace=true
-          automated:
